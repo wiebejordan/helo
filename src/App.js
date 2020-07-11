@@ -1,24 +1,33 @@
 import React, {Component} from 'react';
+
 import './App.css';
-import Auth from './components/Auth/Auth';
-import Dashboard from './components/Dashboard/Dashboard';
-import Post from './components/Post/Post';
 import Nav from './components/Nav/Nav';
-import Form from './components/Form/Form';
+
+import routes from './routes';
+
 
 class App extends Component{
+    constructor(props){
+      super(props);
+
+      this.state = {
+        navView: true
+      }
+    }
+
+
+ 
   
   render(){
     return(
       <div>
         <Nav/>
-        <Auth/>
-        <Dashboard/>
-        <Form/>
-        <Post/>
+        
+        {routes}
       </div>
     )
   }
+
 }
 
 export default App;

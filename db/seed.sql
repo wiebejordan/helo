@@ -2,7 +2,7 @@ create table if not exists helo_users (
     user_id serial primary key,
     username varchar(20),
     email varchar(150),
-    password varchar(250),
+    password text,
     profile_picture text
 );
 
