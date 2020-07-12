@@ -1,0 +1,16 @@
+.nav {
+  height: 100vh;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: aqua;
+}
+
+
+img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+
+}

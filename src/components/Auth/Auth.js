@@ -10,7 +10,7 @@ class Auth extends Component {
     this.state = {
       username: '',
       password: '',
-      picture: ''
+      picture: 'https://i.cdn.turner.com/adultswim/big/video/decker-unsealed-heroes-united/promo_DeckerActionTrailer70_Dated_3523T.jpg'
     }
   }
 
