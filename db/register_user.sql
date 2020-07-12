@@ -1,11 +1,11 @@
-insert into helo_user (
+insert into helo_users (
     username,
-    email,
     password,
+    profile_picture
 ) values (
     ${username},
-    ${email},
     ${password},
+    ${profilePicture}
     
 )
-returning user_id, username, email, profile_picture;
+returning user_id, username, profile_picture;

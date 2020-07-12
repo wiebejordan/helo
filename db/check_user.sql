@@ -1,2 +1,2 @@
-select * from helo_user
+select * from helo_users
 where username = ${username};

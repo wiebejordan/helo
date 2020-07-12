@@ -2,18 +2,18 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
   register: async (req, res) => {
-    const {username, password} = req.body,
+    const {username, password, profilePicture} = req.body,
           db = req.app.get('db');
     
-    const foundUser = await db.helo_users.check_user({username});
+    const foundUser = await db.check_user({username});
     if(foundUser[0]){
       return res.status(400).send('Username already exists.')
     }
 
     let salt = bcrypt.genSaltSync(10),
-        hash = bcrypt.hashSync(password, salt);
+            hash = bcrypt.hashSync(password, salt);
 
-    const newUser = await db.helo_users.register_user({username, password: hash});
+    const newUser = await db.register_user({username, password: hash, profilePicture});
     req.session.user = newUser[0];
     res.status(201).send(req.session.user);
   },
@@ -22,7 +22,7 @@ module.exports = {
     const {username, password} = req.body,
           db= req.app.get('db');
     
-    const foundUser = await db.helo_users.check_user({username});
+    const foundUser = await db.check_user({username});
     if(!foundUser[0]){
       return res.status(400).send('Username does not exist');
     }
