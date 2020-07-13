@@ -1,7 +1,9 @@
 .dash-main {
   width: 100vw;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   background-color: rgb(233, 232, 232);
   
 }
@@ -36,3 +38,42 @@
 .searchbar-checkbox input{
   width: 20px
 }
+
+.post-container{
+  width: 500px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.post-box{
+  height: 25px;
+  width: 480px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin: 1px;
+
+}
+
+.title{
+  font-size: 15px;
+}
+
+.post-box img{
+  height: 20px;
+  width: 20px;
+}
+
+.post-author{
+  width: 100px;
+  
+  display: flex;
+  align-items: center;
+}
+
+

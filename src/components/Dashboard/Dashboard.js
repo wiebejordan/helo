@@ -40,13 +40,16 @@ class Dashboard extends Component {
   render(){
     const mappedPosts = this.state.posts.map((post, i) => (
           
+          <div key={i} className='post-box' >
           <Link to={`/post/${post.post_id}`}>
-          <div key={i} className='post-box'>
-            <p>{post.title}</p>
-            <p>{post.username}</p>
-            <img src={post.profile_picture} alt={post.username} />
-          </div>
+            <p className='title'>{post.title}</p>
           </Link>
+              <div className='post-author'>
+              <p >{post.username}</p>
+              <img src={post.profile_picture} alt={post.username} />
+              </div>
+          </div>
+          
           
           
     ))
@@ -63,14 +66,17 @@ class Dashboard extends Component {
         <button>Search</button>
         <button>Reset</button>
         </div>
-        
+
         <div className='searchbar-checkbox'>
         My Posts:<input
         type='checkbox'
+        defaultChecked={this.state.userPosts}
         onClick={this.handleToggle}
         />
         </div>
 
+        </div>
+        <div className='post-container'>
         {mappedPosts}
         </div>
       </div>

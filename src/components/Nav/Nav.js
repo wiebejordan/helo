@@ -35,12 +35,18 @@ class Nav extends Component {
       {this.props.location.pathname !== '/'
       ?( 
       <div className='nav'>
-       <img src={this.props.user.profile_picture}
-        alt={this.props.user.username}/>
-       <p>{this.props.user.username}</p>
-       <Link to='/dashboard'>Home</Link>
-       <Link to='/new'>New Post</Link>
-       <Link to='/' onClick={this.logout}>Logout</Link>
+          <div className='nav-upper'>
+            <img src={this.props.user.profile_picture}
+            alt={this.props.user.username}/>
+          <p>{this.props.user.username}</p>
+          <Link to='/dashboard'><nav>Home</nav></Link>
+          <Link to='/new'><nav>New Post</nav></Link>
+          </div>
+
+          <div className='nav-lower'>
+            <Link to='/' onClick={this.logout}><nav>Logout</nav></Link>
+        </div>
+       
       </div>
        )
       :null}
