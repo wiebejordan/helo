@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import '../Dashboard/Dashboard.css'
 
@@ -22,7 +23,7 @@ class Dashboard extends Component {
 
   getPosts = () => {
 
-    axios.get(`/api/posts/${this.props.user.user_id}`)
+    axios.get(`/api/posts/${this.props.user.user_id}?search=${this.state.search}&userposts=${this.state.userPosts}`)
     .then(res => this.setState({posts: res.data}))
     .catch(err => console.log(err));
     
@@ -39,11 +40,15 @@ class Dashboard extends Component {
 
   render(){
     const mappedPosts = this.state.posts.map((post, i) => (
+          
+          <Link to={`/post/${post.post_id}`}>
           <div key={i} className='post-box'>
             <p>{post.title}</p>
             <p>{post.username}</p>
             <img src={post.profile_picture} alt={post.username} />
           </div>
+          </Link>
+          
           
     ))
     return(
