@@ -3,7 +3,7 @@ module.exports = {
          const db = req.app.get('db'),
               {userid} = req.params;
       
-              console.log(req.params)
+              console.log(req.query)
 
       db.posts.get_posts(userid)
       

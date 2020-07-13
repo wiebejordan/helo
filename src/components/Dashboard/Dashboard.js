@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import '../Dashboard/Dashboard.css'
 
 class Dashboard extends Component {
     constructor(props){
@@ -15,24 +16,33 @@ class Dashboard extends Component {
 
   componentDidMount = () => {
     this.getPosts();
-    console.log(this.state.posts)
+    
+    
   }
 
   getPosts = () => {
+
     axios.get(`/api/posts/${this.props.user.user_id}`)
     .then(res => this.setState({posts: res.data}))
     .catch(err => console.log(err));
+    
   }
 
   handleInput = (val) => {
       this.setState({search: val})
   }
 
+  handleToggle =() => {
+    this.setState({userPosts: !this.state.userPosts})
+    console.log(this.state.userPosts)
+  }
+
   render(){
     const mappedPosts = this.state.posts.map((post, i) => (
-          <div className='post-box'>
+          <div key={i} className='post-box'>
             <p>{post.title}</p>
-            <p>{}</p>
+            <p>{post.username}</p>
+            <img src={post.profile_picture} alt={post.username} />
           </div>
           
     ))
@@ -48,6 +58,7 @@ class Dashboard extends Component {
         <button>Reset</button>
         My Posts:<input
         type='checkbox'
+        onClick={this.handleToggle}
         />
 
         {mappedPosts}
