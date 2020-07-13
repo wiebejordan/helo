@@ -29,12 +29,14 @@ massive({
 //login endpoints
 app.post('/auth/register', ctrl.register);
 app.post('/auth/login', ctrl.login);
-app.get('/auth/logout', ctrl.logout);
+app.post('/auth/logout', ctrl.logout);
 
 //post endpoints
-app.get('/api/posts/:userid', postCtrl.getPosts);
+app.get('/api/posts', postCtrl.getPosts);
 app.get('/api/post/:postid', postCtrl.getSinglePost);
-app.post('/api/post/:userid', postCtrl.newPost);
+app.post('/api/post/', postCtrl.newPost);
 app.delete('/api/post/:postid', postCtrl.deletePost);
+
+app.get('/api/auth/me', ctrl.keepUser);
 
 app.listen(SERVER_PORT, () => console.log(`Crushing it on port ${SERVER_PORT}`));

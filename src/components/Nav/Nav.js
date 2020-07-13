@@ -1,11 +1,32 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {getUser, clearUser} from '../../ducks/reducer';
+import axios from 'axios';
 import '../Nav/Nav.css';
 
 class Nav extends Component {
 
+  componentDidMount = () => [
+    this.keepUser()
+  ]
   
+  keepUser = () => {
+      axios.get('/api/auth/me')
+      .then(res => {
+        this.props.getUser(res.data[0])
+      })
+      .catch(err => console.log(err))
+  }
+
+  logout = () => {
+    axios.post('/auth/logout')
+    .then(() => {
+      this.props.clearUser();
+      this.props.history.push('/');
+    })
+    .catch(err => console.log(err))
+  }
 
   render(){
     console.log(this.props)
@@ -17,7 +38,7 @@ class Nav extends Component {
        <p>{this.props.user.username}</p>
        <Link to='/dashboard'>Home</Link>
        <Link to='/new'>New Post</Link>
-       <Link to='/'>Logout</Link>
+       <Link to='/' onClick={this.logout}>Logout</Link>
 
       </div>
     )
@@ -25,4 +46,4 @@ class Nav extends Component {
 }
 const mapStateToProps = reduxState => reduxState;
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps, {getUser, clearUser} )(Nav);

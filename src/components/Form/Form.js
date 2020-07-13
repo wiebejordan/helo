@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import axios from 'axios';
 
 class Form extends Component {
@@ -19,7 +18,7 @@ class Form extends Component {
     }
 
     newPost = () => {
-      axios.post(`/api/post/${this.props.user.userid}`, {title: this.state.title, content: this.state.content, img: this.state.img })
+      axios.post(`/api/post`, {title: this.state.title, content: this.state.content, img: this.state.img })
       .then(() =>{ 
         this.props.history.push('/');
       })
@@ -53,6 +52,6 @@ class Form extends Component {
   }
 }
 
-const mapStateToProps = reduxState => reduxState;
 
-export default connect(mapStateToProps)(Form);
+
+export default Form;

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import '../Dashboard/Dashboard.css'
@@ -23,7 +22,7 @@ class Dashboard extends Component {
 
   getPosts = () => {
 
-    axios.get(`/api/posts/${this.props.user.user_id}?search=${this.state.search}&userposts=${this.state.userPosts}`)
+    axios.get(`/api/posts`)
     .then(res => this.setState({posts: res.data}))
     .catch(err => console.log(err));
     
@@ -72,6 +71,6 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = reduxState => reduxState;
 
-export default connect(mapStateToProps)(Dashboard);
+
+export default Dashboard;

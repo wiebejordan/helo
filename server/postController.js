@@ -1,15 +1,15 @@
 module.exports = {
     getPosts: (req, res) => {
-         const db = req.app.get('db'),
-              {userid} = req.params;
+         const db = req.app.get('db');
+               
       
               
 
-      db.posts.get_posts(userid)
+      db.posts.get_posts(req.session.userid.user_id)
       
       .then(posts => res.status(200).send(posts))
       .catch(err => res.status(500).send(err));
-      
+      // console.log(req.session)
     },
 
     getSinglePost: (req, res) => {
@@ -26,10 +26,9 @@ module.exports = {
 
     newPost: (req, res) => {
       const db = req.app.get('db'),
-            {userid} = req.params,
             {title, img, content} = req.body;
 
-      db.posts.new_post( title, img, content, userid)
+      db.posts.new_post( title, img, content, req.session.userid.user_id)
       .then(() => res.sendStatus(200))
       .catch(err => res.status(500).send(err))
     },
