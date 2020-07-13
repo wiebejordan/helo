@@ -41,6 +41,7 @@ class Post extends Component {
     
 
   render(){
+    
     return(
       <div>
           <div className='post-header'>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getUser, clearUser} from '../../ducks/reducer';
 import axios from 'axios';
@@ -29,9 +29,11 @@ class Nav extends Component {
   }
 
   render(){
-    console.log(this.props)
+    console.log(this.props.location.pathname)
     return(
-      
+      <div>
+      {this.props.location.pathname !== '/'
+      ?( 
       <div className='nav'>
        <img src={this.props.user.profile_picture}
         alt={this.props.user.username}/>
@@ -39,6 +41,9 @@ class Nav extends Component {
        <Link to='/dashboard'>Home</Link>
        <Link to='/new'>New Post</Link>
        <Link to='/' onClick={this.logout}>Logout</Link>
+      </div>
+       )
+      :null}
 
       </div>
     )
@@ -46,4 +51,4 @@ class Nav extends Component {
 }
 const mapStateToProps = reduxState => reduxState;
 
-export default connect(mapStateToProps, {getUser, clearUser} )(Nav);
+export default withRouter(connect(mapStateToProps, {getUser, clearUser} )(Nav));
