@@ -4,6 +4,7 @@ const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
       ctrl = require('./controller'),
+      postCtrl = require('./postController'),
       {SERVER_PORT, SESSION_SECRET, DB_URI} = process.env,
       app = express();
 
@@ -25,7 +26,11 @@ massive({
     console.log('db connected')
 }).catch(err => console.log(err));
 
+//login endpoints
 app.post('/auth/register', ctrl.register);
 app.post('/auth/login', ctrl.login);
+
+//post endpoints
+app.get('/api/posts/:userid', postCtrl.getPosts);
 
 app.listen(SERVER_PORT, () => console.log(`Crushing it on port ${SERVER_PORT}`));
