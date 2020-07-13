@@ -16,7 +16,7 @@ class Nav extends Component {
         alt={this.props.user.username}/>
        <p>{this.props.user.username}</p>
        <Link to='/dashboard'>Home</Link>
-       <Link to='./post/:postid'>New Post</Link>
+       <Link to='/new'>New Post</Link>
        <Link to='/'>Logout</Link>
 
       </div>

@@ -22,6 +22,16 @@ module.exports = {
 
       .then(post => res.status(200).send(post))
       .catch(err => res.status(500).send(err));
+    },
+
+    newPost: (req, res) => {
+      const db = req.app.get('db'),
+            {userid} = req.params,
+            {title, img, content} = req.body;
+
+      db.posts.new_post( title, img, content, userid)
+      .then(() => res.sendStatus(200))
+      .catch(err => res.status(500).send(err))
     }
 
 

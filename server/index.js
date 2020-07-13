@@ -33,5 +33,6 @@ app.post('/auth/login', ctrl.login);
 //post endpoints
 app.get('/api/posts/:userid', postCtrl.getPosts);
 app.get('/api/post/:postid', postCtrl.getSinglePost);
+app.post('/api/post/:userid', postCtrl.newPost);
 
 app.listen(SERVER_PORT, () => console.log(`Crushing it on port ${SERVER_PORT}`));
