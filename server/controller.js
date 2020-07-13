@@ -14,8 +14,8 @@ module.exports = {
             hash = bcrypt.hashSync(password, salt);
 
     const newUser = await db.register_user({username, password: hash, profilePicture});
-    req.session.user = newUser[0];
-    res.status(201).send(req.session.user);
+    req.session.userid = newUser[0];
+    res.status(201).send(req.session.userid);
   },
 
   login: async (req, res) => {
@@ -33,9 +33,14 @@ module.exports = {
     }
 
     delete foundUser[0].password;
-    req.session.user = foundUser[0];
-    res.status(202).send(req.session.user);
+    req.session.userid = foundUser[0];
+    res.status(202).send(req.session.userid);
     
+  },
+  logout: (req, res) => {
+    req.session.destroy();
+    res.sendStatus(200);
+    console.log('logged out!')
   }
 
 }

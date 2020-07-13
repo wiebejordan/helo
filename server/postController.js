@@ -32,6 +32,16 @@ module.exports = {
       db.posts.new_post( title, img, content, userid)
       .then(() => res.sendStatus(200))
       .catch(err => res.status(500).send(err))
+    },
+
+    deletePost: (req, res) => {
+      const db = req.app.get('db'),
+            {postid} = req.params;
+
+      db.posts.delete_post(postid)
+      .then(() => res.sendStatus(200))
+      .catch(err => res.status(500).send(err));
+
     }
 
 

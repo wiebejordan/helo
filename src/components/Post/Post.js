@@ -29,6 +29,14 @@ class Post extends Component {
       
     }
 
+    deletePost = (id => {
+      axios.delete(`/api/post/${id}`)
+      .then(() => {
+        this.history.push('/dashboard');
+      })
+      .catch(err => console.log(err));
+    })
+
     
     
 
@@ -42,7 +50,9 @@ class Post extends Component {
           </div>
        <img src={this.state.image} alt={this.state.title} />
        <p>{this.state.content}</p>
-       
+        {this.props.user.username === this.state.username
+        ?(<button onClick={() => this.deletePost(this.props.match.params.postid)}>Delete Post</button>)
+        :null}
        
       </div>
     )
