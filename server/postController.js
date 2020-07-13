@@ -27,10 +27,12 @@ module.exports = {
     newPost: (req, res) => {
       const db = req.app.get('db'),
             {title, img, content} = req.body;
+             
 
-      db.posts.new_post( title, img, content, req.session.userid.user_id)
+      db.posts.new_post( title, img, content)
       .then(() => res.sendStatus(200))
       .catch(err => res.status(500).send(err))
+      // console.log(req.session.userid.user_id)
     },
 
     deletePost: (req, res) => {

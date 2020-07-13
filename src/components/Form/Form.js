@@ -9,6 +9,7 @@ class Form extends Component {
         title: '',
         img: '',
         content: '',
+      
       }
     }
   
@@ -20,12 +21,13 @@ class Form extends Component {
     newPost = () => {
       axios.post(`/api/post`, {title: this.state.title, content: this.state.content, img: this.state.img })
       .then(() =>{ 
-        this.props.history.push('/');
+        this.props.history.push('/dashboard');
       })
       .catch(err => console.log(err));
     }
 
   render(){
+    // console.log(this.props)
     return(
       <div>
         <input

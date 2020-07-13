@@ -1,3 +1,38 @@
-.post-box {
+.dash-main {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(233, 232, 232);
   
+}
+
+.dash-searchbar{
+  width: 500px;
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  margin-top: 25px;
+  
+}
+
+.dash-searchbar input{
+  width: 200px;
+  font-size: 10px;
+}
+
+.dash-searchbar button{
+  font-size: 10px;
+}
+
+.searchbar-checkbox{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 100px;
+}
+
+.searchbar-checkbox input{
+  width: 20px
 }

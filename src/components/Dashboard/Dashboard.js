@@ -51,7 +51,9 @@ class Dashboard extends Component {
           
     ))
     return(
-      <div>
+      <div className='dash-main'>
+        <div className='dash-searchbar'>
+          <div>
         <input 
         name = 'search'
         value = {this.state.search}
@@ -60,12 +62,17 @@ class Dashboard extends Component {
 
         <button>Search</button>
         <button>Reset</button>
+        </div>
+        
+        <div className='searchbar-checkbox'>
         My Posts:<input
         type='checkbox'
         onClick={this.handleToggle}
         />
+        </div>
 
         {mappedPosts}
+        </div>
       </div>
     )
   }
