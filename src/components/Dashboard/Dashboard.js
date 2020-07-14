@@ -70,7 +70,7 @@ class Dashboard extends Component {
         <input 
         name = 'search'
         value = {this.state.search}
-        placeholder = 'search'
+        placeholder = 'search by title'
         onChange= {(e) => this.handleInput(e.target.value)}/>
 
         <button>Search</button>

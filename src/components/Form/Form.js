@@ -14,6 +14,7 @@ class Form extends Component {
         
       
       }
+      this.handleBind=this.handleBind(this);
     }
   
 
@@ -29,6 +30,12 @@ class Form extends Component {
       })
       .catch(err => console.log(err));}
       else {alert('enter a title for this post')}
+    }
+
+    handleBind(){
+      if(this.state.title === 'Bind Baby Bind')
+      {alert('I KNOW WHAT BINDING IS BUT I USE ARROW FUNCTIONS')}
+      
     }
 
   render(){
