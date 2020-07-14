@@ -65,7 +65,8 @@
 
 .post-content-box{
   height: 150px;
-  width: 150px;
+  width: 250px;
+  overflow: scroll;
 }
 
 .post-content{
@@ -75,5 +76,5 @@
 
 .post-main button{
   height: 20px;
-  margin-top: 130px;;
+  margin-left: 400px;
 }

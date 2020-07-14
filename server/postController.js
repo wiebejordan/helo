@@ -26,10 +26,10 @@ module.exports = {
 
     newPost: (req, res) => {
       const db = req.app.get('db'),
-            {title, img, content} = req.body;
+            {title, img, content, author_id} = req.body;
              
 
-      db.posts.new_post( title, img, content)
+      db.posts.new_post( title, img, content, author_id)
       .then(() => res.sendStatus(200))
       .catch(err => res.status(500).send(err))
       // console.log(req.session.userid.user_id)
