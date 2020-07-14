@@ -53,7 +53,7 @@ class Form extends Component {
          />
 
         <h3 className='h3-content'> Content:</h3>
-        <input
+        <textarea
         className='form-content'
         name='content'
         value={this.state.content}

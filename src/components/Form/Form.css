@@ -57,7 +57,9 @@
 }
 
 .form-content{
-  height:50px;
+  height:100px;
+  width: 410px;
+  
 }
 
 .form-container button{
