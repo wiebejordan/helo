@@ -26,11 +26,11 @@ class Auth extends Component {
       axios.post('/auth/register', {username, password, profilePicture: picture})
       .then(res => {
         this.props.getUser(res.data);
-        this.history.push('/dashboard');
+        this.props.history.push('/dashboard');
       })
       .catch(err => console.log(err))
     } else {
-      alert('incorrect password');
+      alert('enter password');
     }
   }
 
@@ -45,7 +45,7 @@ class Auth extends Component {
   }
 
   render(){
-    // console.log(this.props)
+    console.log(this.props)
     return(
       <div className='auth-main'>
       <div className='auth-box'>

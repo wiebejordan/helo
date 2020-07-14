@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux'
 import axios from 'axios';
 import '../Dashboard/Dashboard.css'
 
@@ -15,7 +16,10 @@ class Dashboard extends Component {
     }
 
   componentDidMount = () => {
-    this.getPosts();
+    if(!this.props.user.user_id){
+      this.props.history.push('/');
+    } 
+    else {this.getPosts();}
     
     
   }
@@ -37,7 +41,12 @@ class Dashboard extends Component {
     console.log(this.state.userPosts)
   }
 
+  handleClear = () => {
+    this.setState({search: ''})
+  }
+
   render(){
+    console.log(this.props);
     const mappedPosts = this.state.posts.map((post, i) => (
           
           <div key={i} className='post-box' >
@@ -64,7 +73,7 @@ class Dashboard extends Component {
         onChange= {(e) => this.handleInput(e.target.value)}/>
 
         <button>Search</button>
-        <button>Reset</button>
+        <button onClick={this.handleClear}>Reset</button>
         </div>
 
         <div className='searchbar-checkbox'>
@@ -84,6 +93,6 @@ class Dashboard extends Component {
   }
 }
 
+const mapStateToProps = reduxState => reduxState;
 
-
-export default Dashboard;
+export default connect(mapStateToProps)(Dashboard);
