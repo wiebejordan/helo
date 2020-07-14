@@ -10,7 +10,7 @@
 
 .post-holder{
   width: 500px;
-  height: 200px;
+  height: 250px;
   display: flex;
   flex-wrap: wrap;
   background-color: white;
@@ -20,7 +20,7 @@
 
 .post-header {
   width: 500px;
-  height: auto;
+  height: 40px;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -61,6 +61,11 @@
   width: 200px;;
   border-radius: 0;
   margin-left: 20px;
+}
+
+.post-content-box{
+  height: 150px;
+  width: 150px;
 }
 
 .post-content{
