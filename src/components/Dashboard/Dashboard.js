@@ -17,7 +17,7 @@ class Dashboard extends Component {
 
   componentDidMount = () => {
     if(!this.props.user.user_id){
-      this.props.history.push('/');
+      // this.props.history.push('/');
     } 
     else {this.getPosts();}
     
@@ -63,6 +63,7 @@ class Dashboard extends Component {
           
     ))
     return(
+      
       <div className='dash-main'>
         <div className='dash-searchbar'>
           <div>

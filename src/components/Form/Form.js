@@ -22,11 +22,13 @@ class Form extends Component {
     }
 
     newPost = () => {
-      axios.post(`/api/post`, {title: this.state.title, content: this.state.content, img: this.state.img, author_id: this.props.user.user_id })
+      if(this.state.title !== '')
+      {axios.post(`/api/post`, {title: this.state.title, content: this.state.content, img: this.state.img, author_id: this.props.user.user_id })
       .then(() =>{ 
         this.props.history.push('/dashboard');
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err));}
+      else {alert('enter a title for this post')}
     }
 
   render(){

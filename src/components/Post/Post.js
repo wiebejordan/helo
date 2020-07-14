@@ -33,7 +33,7 @@ class Post extends Component {
     deletePost = (id => {
       axios.delete(`/api/post/${id}`)
       .then(() => {
-        this.history.push('/dashboard');
+        this.props.history.push('/dashboard');
       })
       .catch(err => console.log(err));
     })

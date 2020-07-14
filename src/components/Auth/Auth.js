@@ -36,12 +36,14 @@ class Auth extends Component {
 
   handleLogin = () => {
     const {username, password} = this.state;
+    
     axios.post('/auth/login', {username, password})
     .then(res => {
       this.props.getUser(res.data);
       this.props.history.push('/dashboard');
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err))
+    
   }
 
   render(){
