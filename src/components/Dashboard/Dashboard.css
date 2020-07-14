@@ -16,6 +16,7 @@
   align-items: center;
   background-color: white;
   margin-top: 25px;
+  margin-bottom: 10px;
   
 }
 
@@ -41,27 +42,33 @@
 
 .post-container{
   width: 500px;
-  height: 60px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-color: white;
+  box-shadow: 1px 1px 1px #888888
 }
 
 .post-box{
-  height: 25px;
+  height: 40px;
   width: 480px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  margin: 1px;
+  margin: 2px;
+  
+  border: 1px outset #888888;
+  box-shadow: 1px 1px 1px #888888;
+  
 
 }
 
 .title{
   font-size: 15px;
+  
 }
 
 .post-box img{
@@ -69,9 +76,17 @@
   width: 20px;
 }
 
+.post-box-title{
+  margin-left: 10px;
+}
+
+.post-box-author {
+  margin-right: 10px;
+}
+
 .post-author{
   width: 100px;
-  
+  margin-right: 10px;
   display: flex;
   align-items: center;
 }

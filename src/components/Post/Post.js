@@ -54,7 +54,7 @@ class Post extends Component {
             </div> 
           </div>
        <img className='post-image' src={this.state.image} alt={this.state.title} />
-       <p>{this.state.content}</p>
+       <p className='post-content'>{this.state.content}</p>
         {this.props.user.username === this.state.username
         ?(<button onClick={() => this.deletePost(this.props.match.params.postid)}>Delete Post</button>)
         :null}

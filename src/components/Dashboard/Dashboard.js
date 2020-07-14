@@ -51,10 +51,10 @@ class Dashboard extends Component {
           
           <div key={i} className='post-box' >
           <Link to={`/post/${post.post_id}`}>
-            <p className='title'>{post.title}</p>
+            <p className='post-box-title'>{post.title}</p>
           </Link>
               <div className='post-author'>
-              <p >{post.username}</p>
+              <p className='post-box-author' >{post.username}</p>
               <img src={post.profile_picture} alt={post.username} />
               </div>
           </div>

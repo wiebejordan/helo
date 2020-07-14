@@ -49,6 +49,7 @@ class Auth extends Component {
     return(
       <div className='auth-main'>
       <div className='auth-box'>
+        <h1>:)</h1>
         <h1>Helo</h1>
         <div className='auth-input'>
         Username: <input 
