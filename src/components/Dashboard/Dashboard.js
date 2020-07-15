@@ -9,55 +9,65 @@ class Dashboard extends Component {
       super(props);
 
       this.state = {
-        search: '',
+        search: ``,
+        searchVal: ``,
         userPosts: true,
         posts: []
       }
     }
 
   componentDidMount = () => {
-    if(!this.props.user.user_id){
-      // this.props.history.push('/');
-    } 
-    else {this.getPosts();}
-    
+    this.getPosts();
     
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+      if(prevState.search !== this.state.search){
+        this.getPosts();
+      }
+  }
+    
+
   getPosts = () => {
 
-    axios.get(`/api/posts`)
+    axios.get(`/api/posts?title=${this.state.search}`)
+      
     .then(res => this.setState({posts: res.data}))
     .catch(err => console.log(err));
     
   }
 
   handleInput = (val) => {
-      this.setState({search: val})
+      this.setState({searchVal: val});
+      
   }
 
   handleToggle =() => {
     this.setState({userPosts: !this.state.userPosts})
-    console.log(this.state.userPosts)
+    // console.log(this.state.userPosts)
+  }
+
+  handleSearch = () => {
+    this.setState({search: this.state.searchVal})
   }
 
   handleClear = () => {
-    this.setState({search: ''})
+    this.setState({search: '', searchVal: ''})
   }
 
   render(){
     console.log(this.props);
     const mappedPosts = this.state.posts.map((post, i) => (
           
-          <div key={i} className='post-box' >
           <Link to={`/post/${post.post_id}`}>
+          <div key={i} className='post-box' >
             <p className='post-box-title'>{post.title}</p>
-          </Link>
               <div className='post-author'>
               <p className='post-box-author' >{post.username}</p>
               <img src={post.profile_picture} alt={post.username} />
               </div>
           </div>
+          </Link>
           
           
           
@@ -68,12 +78,12 @@ class Dashboard extends Component {
         <div className='dash-searchbar'>
           <div>
         <input 
-        name = 'search'
-        value = {this.state.search}
+        name = 'searchVal'
+        value = {this.state.searchVal}
         placeholder = 'search by title'
         onChange= {(e) => this.handleInput(e.target.value)}/>
 
-        <button>Search</button>
+        <button onClick={this.handleSearch}>Search</button>
         <button onClick={this.handleClear}>Reset</button>
         </div>
 

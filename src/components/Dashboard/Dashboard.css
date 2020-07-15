@@ -66,6 +66,10 @@
 
 }
 
+.post-box:hover{
+  background-color: rgb(238, 236, 236);
+}
+
 .title{
   font-size: 15px;
   

@@ -32,7 +32,7 @@ app.post('/auth/login', ctrl.login);
 app.post('/auth/logout', ctrl.logout);
 
 //post endpoints
-app.get('/api/posts', postCtrl.getPosts);
+app.get(`/api/posts`, postCtrl.getPosts);
 app.get('/api/post/:postid', postCtrl.getSinglePost);
 app.post('/api/post/', postCtrl.newPost);
 app.delete('/api/post/:postid', postCtrl.deletePost);

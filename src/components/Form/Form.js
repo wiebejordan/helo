@@ -35,11 +35,11 @@ class Form extends Component {
     handleBind(){
       if(this.state.title === 'Bind Baby Bind')
       {alert('I KNOW WHAT BINDING IS BUT I USE ARROW FUNCTIONS')}
-      
+
     }
 
   render(){
-    // console.log(this.props)
+    console.log(this.props)
     return(
       <div className='form-main'>
         <div className='form-container'>

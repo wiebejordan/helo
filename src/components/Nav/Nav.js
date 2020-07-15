@@ -29,7 +29,7 @@ class Nav extends Component {
   }
 
   render(){
-    console.log(this.props.location.pathname)
+    // console.log(this.props.location.pathname)
     return(
       <div>
       {this.props.location.pathname !== '/'
