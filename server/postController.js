@@ -6,15 +6,24 @@ module.exports = {
       if(!req.query.title && req.query.userPosts === 'true'){
         
         db.posts.get_all_posts()
+        
         .then(posts => res.status(200).send(posts))
         .catch(err => res.status(500).send(err));
       } 
       else if(!req.query.title && req.query.userPosts === 'false'){
         
         db.posts.get_no_user_posts(req.session.userid.user_id)
+        
         .then(posts => res.status(200).send(posts))
         .catch(err => res.status(500).send(err));
-      }    
+      }  
+      else if(req.query.title && req.query.userPosts === 'false'){
+        db.posts.get_no_user_search_posts(req.session.userid.user_id, req.query.title)
+
+        .then(posts => res.status(200).send(posts))
+        .catch(err => res.status(500).send(err));
+      }
+      
       else {
         db.posts.get_search_posts(req.query.title)
       
