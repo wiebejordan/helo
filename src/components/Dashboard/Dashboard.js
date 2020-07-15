@@ -25,15 +25,19 @@ class Dashboard extends Component {
       if(prevState.search !== this.state.search){
         this.getPosts();
       }
+      else if(prevState.userPosts !== this.state.userPosts){
+        this.getPosts();
+      }
   }
     
 
   getPosts = () => {
-
-    axios.get(`/api/posts?title=${this.state.search}`)
+    
+    axios.get(`/api/posts?title=${this.state.search}&userPosts=${this.state.userPosts}`)
       
     .then(res => this.setState({posts: res.data}))
     .catch(err => console.log(err));
+    
     
   }
 
@@ -44,7 +48,7 @@ class Dashboard extends Component {
 
   handleToggle =() => {
     this.setState({userPosts: !this.state.userPosts})
-    // console.log(this.state.userPosts)
+    console.log(this.state.userPosts)
   }
 
   handleSearch = () => {
