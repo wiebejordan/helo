@@ -18,6 +18,7 @@ module.exports = {
         .catch(err => res.status(500).send(err));
       }  
       else if(req.query.title && req.query.userPosts === 'false'){
+        
         db.posts.get_no_user_search_posts(req.session.userid.user_id, req.query.title)
 
         .then(posts => res.status(200).send(posts))

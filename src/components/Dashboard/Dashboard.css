@@ -11,7 +11,7 @@
 
 .dash-searchbar{
   width: 500px;
-  height: 30px;
+  height: 40px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -91,7 +91,6 @@
 }
 
 .post-author{
-  width: 100px;
   margin-right: 10px;
   display: flex;
   align-items: center;
